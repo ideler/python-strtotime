@@ -1,12 +1,9 @@
-#! /usr/bin/env py.test
-
-import py, timelib
-
-
-def test_bad_date():
-    py.test.raises(ValueError, timelib.strtotime, "2007-09-27PM EDT")
+#!/usr/bin/env python3
+# -*- coding=utf-8 -*-
 
 
-def test_epoch():
-    d = timelib.strtotime("1970-01-01")
-    assert d == 0, "epoch should be 0"
+import timelib, datetime
+
+
+ts = timelib.strtotime("last sunday of last month noon".encode("utf-8"))
+print(datetime.datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S"))

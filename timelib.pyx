@@ -5,39 +5,41 @@ version = "0.2.4"
 version_info = (0, 2, 4)
 
 cdef extern from "timelib.h":
-    struct timelib_rel_time:
+    ctypedef struct timelib_rel_time:
         int y, m, d           # /* Years, Months and Days */
         int h, i, s           # /* Hours, mInutes and Seconds */
 
         int weekday           # /* Stores the day in 'next monday' */
         int weekday_behavior  # /* 0: the current day should *not* be counted when advancing forwards; 1: the current day *should* be counted */
 
-    struct timelib_time:
+    ctypedef struct timelib_time:
         int y, m, d, h, i, s
         timelib_rel_time relative
         long sse
 
-    struct timelib_tzdb:
+    ctypedef struct timelib_tzdb:
         pass
 
-    struct timelib_error_message:
+    ctypedef struct timelib_error_message:
         char *message
         int position
         int character
 
-    struct timelib_error_container:
+    ctypedef struct timelib_error_container:
         int error_count
         timelib_error_message *error_messages
 
-    struct timelib_tzinfo:
+    ctypedef struct timelib_tzinfo:
         pass
 
     long timelib_date_to_int(timelib_time *d, int *error)
 
     void timelib_time_dtor(timelib_time* t)
     void timelib_error_container_dtor(timelib_error_container *)
+    timelib_tzinfo *timelib_parse_tzfile(char *timezone, const timelib_tzdb *tzdb, int *error_code)
+    ctypedef timelib_tzinfo* (*timelib_tz_get_wrapper)(char *tzname, const timelib_tzdb *tzdb, int *error_code)
 
-    timelib_time *timelib_strtotime(char *s, int len, timelib_error_container **errors, timelib_tzdb *tzdb)
+    timelib_time *timelib_strtotime(char *s, int len, timelib_error_container **errors, timelib_tzdb *tzdb, timelib_tz_get_wrapper tz_get_wrapper)
 
     timelib_tzdb *timelib_builtin_db()
 
@@ -59,7 +61,7 @@ cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:
     cdef timelib_time *tm_now = NULL
     cdef timelib_error_container *error = NULL
 
-    t = timelib_strtotime(s, len(s), &error, timelib_builtin_db())
+    t = timelib_strtotime(s, len(s), &error, timelib_builtin_db(), timelib_parse_tzfile)
 
     if error and error.error_count:
         timelib_time_dtor(t)
