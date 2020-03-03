@@ -29,7 +29,7 @@ timelib.strtotime:
 
 License
 =======
-ext-date-lib contains unmodified sources from the php source
+lib contains unmodified sources from the php source
 distribution. These are distributed under the `php license`_, version
 3.01.
 
