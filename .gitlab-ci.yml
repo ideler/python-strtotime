@@ -14,17 +14,18 @@ prepare:
     - pip install cython
     - re2c -d -b -o lib/parse_date.c lib/parse_date.re
     - cython --directive language_level=3 strtotime.pyx
+    - python setup.py build sdist
   artifacts:
     untracked: true
 
-cp34_x64:
+wheel:
   stage: build
   image: quay.io/pypa/manylinux1_x86_64
   dependencies:
     - prepare
   script:
-    - /opt/python/cp34-cp34m/bin/pip wheel . -w dist
-    - auditwheel repair dist/*whl -w dist
+    - ./build.sh
   artifacts:
     paths:
+      - dist/*.zip
       - dist/*manylinux*whl
