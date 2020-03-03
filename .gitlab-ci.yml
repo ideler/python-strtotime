@@ -21,6 +21,8 @@ prepare:
 cp34_x64:
   stage: build
   image: quay.io/pypa/manylinux1_x86_64
+  dependencies:
+    - prepare
   script:
     - /opt/python/cp34-cp34m/pip wheel . -w dist
   artifacts:
