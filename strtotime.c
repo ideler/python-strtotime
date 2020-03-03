@@ -9,7 +9,7 @@
 #else
 #define CYTHON_ABI "0_29_15"
 #define CYTHON_HEX_VERSION 0x001D0FF0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -590,8 +590,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__timelib
-#define __PYX_HAVE_API__timelib
+#define __PYX_HAVE__strtotime
+#define __PYX_HAVE_API__strtotime
 /* Early includes */
 #include "timelib.h"
 #ifdef _OPENMP
@@ -802,20 +802,20 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "timelib.pyx",
+  "strtotime.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_opt_args_7timelib_strtotimelib_time;
+struct __pyx_opt_args_9strtotime_strtotimelib_time;
 
-/* "timelib.pyx":59
+/* "strtotime.pyx":59
  *     raise ValueError(description)
  * 
  * cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:             # <<<<<<<<<<<<<<
  *     cdef timelib_time *t = NULL
  *     cdef timelib_time *tm_now = NULL
  */
-struct __pyx_opt_args_7timelib_strtotimelib_time {
+struct __pyx_opt_args_9strtotime_strtotimelib_time {
   int __pyx_n;
   PyObject *now;
 };
@@ -981,6 +981,14 @@ static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject 
 /* IncludeStringH.proto */
 #include <string.h>
 
+/* PyObjectFormatAndDecref.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_FormatSimpleAndDecref(PyObject* s, PyObject* f);
+static CYTHON_INLINE PyObject* __Pyx_PyObject_FormatAndDecref(PyObject* s, PyObject* f);
+
+/* JoinPyUnicode.proto */
+static PyObject* __Pyx_PyUnicode_Join(PyObject* value_tuple, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      Py_UCS4 max_char);
+
 /* PyDictVersioning.proto */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 #define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
@@ -1111,14 +1119,15 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'timelib' */
-static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *, struct __pyx_opt_args_7timelib_strtotimelib_time *__pyx_optional_args); /*proto*/
-#define __Pyx_MODULE_NAME "timelib"
-extern int __pyx_module_is_main_timelib;
-int __pyx_module_is_main_timelib = 0;
+/* Module declarations from 'strtotime' */
+static timelib_time *__pyx_f_9strtotime_strtotimelib_time(char *, struct __pyx_opt_args_9strtotime_strtotimelib_time *__pyx_optional_args); /*proto*/
+#define __Pyx_MODULE_NAME "strtotime"
+extern int __pyx_module_is_main_strtotime;
+int __pyx_module_is_main_strtotime = 0;
 
-/* Implementation of 'timelib' */
+/* Implementation of 'strtotime' */
 static PyObject *__pyx_builtin_ValueError;
+static const char __pyx_k_[] = ")";
 static const char __pyx_k_s[] = "s";
 static const char __pyx_k_t[] = "t";
 static const char __pyx_k_now[] = "now";
@@ -1129,19 +1138,19 @@ static const char __pyx_k_time[] = "time";
 static const char __pyx_k_0_2_4[] = "0.2.4";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_retval[] = "retval";
-static const char __pyx_k_timelib[] = "timelib";
 static const char __pyx_k_version[] = "version";
 static const char __pyx_k_datetime[] = "datetime";
 static const char __pyx_k_strtotime[] = "strtotime";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_description[] = "description";
 static const char __pyx_k_raise_error[] = "_raise_error";
-static const char __pyx_k_timelib_pyx[] = "timelib.pyx";
 static const char __pyx_k_version_info[] = "version_info";
 static const char __pyx_k_strtodatetime[] = "strtodatetime";
+static const char __pyx_k_strtotime_pyx[] = "strtotime.pyx";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_while_parsing_date_r[] = " (while parsing date %r)";
-static PyObject *__pyx_kp_s_0_2_4;
+static const char __pyx_k_while_parsing_date[] = " (while parsing date ";
+static PyObject *__pyx_kp_u_;
+static PyObject *__pyx_kp_u_0_2_4;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_datetime;
@@ -1155,30 +1164,29 @@ static PyObject *__pyx_n_s_retval;
 static PyObject *__pyx_n_s_s;
 static PyObject *__pyx_n_s_strtodatetime;
 static PyObject *__pyx_n_s_strtotime;
+static PyObject *__pyx_kp_s_strtotime_pyx;
 static PyObject *__pyx_n_s_t;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
-static PyObject *__pyx_n_s_timelib;
-static PyObject *__pyx_kp_s_timelib_pyx;
 static PyObject *__pyx_n_s_version;
 static PyObject *__pyx_n_s_version_info;
-static PyObject *__pyx_kp_s_while_parsing_date_r;
-static PyObject *__pyx_pf_7timelib__raise_error(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_description); /* proto */
-static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now); /* proto */
-static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now); /* proto */
+static PyObject *__pyx_kp_u_while_parsing_date;
+static PyObject *__pyx_pf_9strtotime__raise_error(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_description); /* proto */
+static PyObject *__pyx_pf_9strtotime_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now); /* proto */
+static PyObject *__pyx_pf_9strtotime_4strtotime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_4;
-static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
-static PyObject *__pyx_tuple__4;
-static PyObject *__pyx_tuple__6;
-static PyObject *__pyx_codeobj__3;
-static PyObject *__pyx_codeobj__5;
-static PyObject *__pyx_codeobj__7;
+static PyObject *__pyx_tuple__3;
+static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__7;
+static PyObject *__pyx_codeobj__4;
+static PyObject *__pyx_codeobj__6;
+static PyObject *__pyx_codeobj__8;
 /* Late includes */
 
-/* "timelib.pyx":56
+/* "strtotime.pyx":56
  * 
  * 
  * def _raise_error(description):             # <<<<<<<<<<<<<<
@@ -1187,26 +1195,26 @@ static PyObject *__pyx_codeobj__7;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7timelib_1_raise_error(PyObject *__pyx_self, PyObject *__pyx_v_description); /*proto*/
-static PyMethodDef __pyx_mdef_7timelib_1_raise_error = {"_raise_error", (PyCFunction)__pyx_pw_7timelib_1_raise_error, METH_O, 0};
-static PyObject *__pyx_pw_7timelib_1_raise_error(PyObject *__pyx_self, PyObject *__pyx_v_description) {
+static PyObject *__pyx_pw_9strtotime_1_raise_error(PyObject *__pyx_self, PyObject *__pyx_v_description); /*proto*/
+static PyMethodDef __pyx_mdef_9strtotime_1_raise_error = {"_raise_error", (PyCFunction)__pyx_pw_9strtotime_1_raise_error, METH_O, 0};
+static PyObject *__pyx_pw_9strtotime_1_raise_error(PyObject *__pyx_self, PyObject *__pyx_v_description) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_raise_error (wrapper)", 0);
-  __pyx_r = __pyx_pf_7timelib__raise_error(__pyx_self, ((PyObject *)__pyx_v_description));
+  __pyx_r = __pyx_pf_9strtotime__raise_error(__pyx_self, ((PyObject *)__pyx_v_description));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7timelib__raise_error(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_description) {
+static PyObject *__pyx_pf_9strtotime__raise_error(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_description) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_raise_error", 0);
 
-  /* "timelib.pyx":57
+  /* "strtotime.pyx":57
  * 
  * def _raise_error(description):
  *     raise ValueError(description)             # <<<<<<<<<<<<<<
@@ -1219,7 +1227,7 @@ static PyObject *__pyx_pf_7timelib__raise_error(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __PYX_ERR(0, 57, __pyx_L1_error)
 
-  /* "timelib.pyx":56
+  /* "strtotime.pyx":56
  * 
  * 
  * def _raise_error(description):             # <<<<<<<<<<<<<<
@@ -1230,14 +1238,14 @@ static PyObject *__pyx_pf_7timelib__raise_error(CYTHON_UNUSED PyObject *__pyx_se
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("timelib._raise_error", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("strtotime._raise_error", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "timelib.pyx":59
+/* "strtotime.pyx":59
  *     raise ValueError(description)
  * 
  * cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:             # <<<<<<<<<<<<<<
@@ -1245,7 +1253,7 @@ static PyObject *__pyx_pf_7timelib__raise_error(CYTHON_UNUSED PyObject *__pyx_se
  *     cdef timelib_time *tm_now = NULL
  */
 
-static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct __pyx_opt_args_7timelib_strtotimelib_time *__pyx_optional_args) {
+static timelib_time *__pyx_f_9strtotime_strtotimelib_time(char *__pyx_v_s, struct __pyx_opt_args_9strtotime_strtotimelib_time *__pyx_optional_args) {
   PyObject *__pyx_v_now = ((PyObject *)Py_None);
   timelib_time *__pyx_v_t;
   timelib_time *__pyx_v_tm_now;
@@ -1258,8 +1266,10 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  long __pyx_t_7;
+  Py_ssize_t __pyx_t_6;
+  Py_UCS4 __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  long __pyx_t_9;
   __Pyx_RefNannySetupContext("strtotimelib_time", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
@@ -1268,7 +1278,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   }
   __Pyx_INCREF(__pyx_v_now);
 
-  /* "timelib.pyx":60
+  /* "strtotime.pyx":60
  * 
  * cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:
  *     cdef timelib_time *t = NULL             # <<<<<<<<<<<<<<
@@ -1277,7 +1287,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   __pyx_v_t = NULL;
 
-  /* "timelib.pyx":61
+  /* "strtotime.pyx":61
  * cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:
  *     cdef timelib_time *t = NULL
  *     cdef timelib_time *tm_now = NULL             # <<<<<<<<<<<<<<
@@ -1286,7 +1296,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   __pyx_v_tm_now = NULL;
 
-  /* "timelib.pyx":62
+  /* "strtotime.pyx":62
  *     cdef timelib_time *t = NULL
  *     cdef timelib_time *tm_now = NULL
  *     cdef timelib_error_container *error = NULL             # <<<<<<<<<<<<<<
@@ -1295,7 +1305,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   __pyx_v_error = NULL;
 
-  /* "timelib.pyx":64
+  /* "strtotime.pyx":64
  *     cdef timelib_error_container *error = NULL
  * 
  *     t = timelib_strtotime(s, len(s), &error, timelib_builtin_db(), timelib_parse_tzfile)             # <<<<<<<<<<<<<<
@@ -1305,7 +1315,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_t_1 = strlen(__pyx_v_s); 
   __pyx_v_t = timelib_strtotime(__pyx_v_s, __pyx_t_1, (&__pyx_v_error), timelib_builtin_db(), timelib_parse_tzfile);
 
-  /* "timelib.pyx":66
+  /* "strtotime.pyx":66
  *     t = timelib_strtotime(s, len(s), &error, timelib_builtin_db(), timelib_parse_tzfile)
  * 
  *     if error and error.error_count:             # <<<<<<<<<<<<<<
@@ -1323,7 +1333,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "timelib.pyx":67
+    /* "strtotime.pyx":67
  * 
  *     if error and error.error_count:
  *         timelib_time_dtor(t)             # <<<<<<<<<<<<<<
@@ -1332,7 +1342,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
     timelib_time_dtor(__pyx_v_t);
 
-    /* "timelib.pyx":69
+    /* "strtotime.pyx":69
  *         timelib_time_dtor(t)
  * 
  *         msg = str(error.error_messages[0].message)             # <<<<<<<<<<<<<<
@@ -1341,62 +1351,77 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
     __pyx_t_4 = __Pyx_PyBytes_FromString((__pyx_v_error->error_messages[0]).message); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_msg = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "timelib.pyx":70
+    /* "strtotime.pyx":70
  * 
  *         msg = str(error.error_messages[0].message)
  *         msg += " (while parsing date %r)" % (s, )             # <<<<<<<<<<<<<<
  * 
  *         _raise_error(msg)
  */
-    __pyx_t_5 = __Pyx_PyBytes_FromString(__pyx_v_s); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_6 = 0;
+    __pyx_t_7 = 127;
+    __Pyx_INCREF(__pyx_kp_u_while_parsing_date);
+    __pyx_t_6 += 21;
+    __Pyx_GIVEREF(__pyx_kp_u_while_parsing_date);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_kp_u_while_parsing_date);
+    __pyx_t_4 = __Pyx_PyBytes_FromString(__pyx_v_s); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
-    __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_while_parsing_date_r, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_t_4), __pyx_empty_unicode); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_msg, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) > __pyx_t_7) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_8) : __pyx_t_7;
+    __pyx_t_6 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8);
+    __Pyx_GIVEREF(__pyx_t_8);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_8);
+    __pyx_t_8 = 0;
+    __Pyx_INCREF(__pyx_kp_u_);
+    __pyx_t_6 += 1;
+    __Pyx_GIVEREF(__pyx_kp_u_);
+    PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_kp_u_);
+    __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_5, 3, __pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF_SET(__pyx_v_msg, __pyx_t_4);
-    __pyx_t_4 = 0;
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_msg, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF_SET(__pyx_v_msg, __pyx_t_5);
+    __pyx_t_5 = 0;
 
-    /* "timelib.pyx":72
+    /* "strtotime.pyx":72
  *         msg += " (while parsing date %r)" % (s, )
  * 
  *         _raise_error(msg)             # <<<<<<<<<<<<<<
  *         timelib_error_container_dtor(error)
  *         return NULL
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_raise_error); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_6)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_6);
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_raise_error); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_4);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
       }
     }
-    __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_v_msg) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_msg);
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_v_msg) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_msg);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "timelib.pyx":73
+    /* "strtotime.pyx":73
  * 
  *         _raise_error(msg)
  *         timelib_error_container_dtor(error)             # <<<<<<<<<<<<<<
@@ -1405,7 +1430,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
     timelib_error_container_dtor(__pyx_v_error);
 
-    /* "timelib.pyx":74
+    /* "strtotime.pyx":74
  *         _raise_error(msg)
  *         timelib_error_container_dtor(error)
  *         return NULL             # <<<<<<<<<<<<<<
@@ -1415,7 +1440,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
     __pyx_r = NULL;
     goto __pyx_L0;
 
-    /* "timelib.pyx":66
+    /* "strtotime.pyx":66
  *     t = timelib_strtotime(s, len(s), &error, timelib_builtin_db(), timelib_parse_tzfile)
  * 
  *     if error and error.error_count:             # <<<<<<<<<<<<<<
@@ -1424,7 +1449,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   }
 
-  /* "timelib.pyx":76
+  /* "strtotime.pyx":76
  *         return NULL
  * 
  *     if error:  # warnings we don't care about             # <<<<<<<<<<<<<<
@@ -1434,7 +1459,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_t_2 = (__pyx_v_error != 0);
   if (__pyx_t_2) {
 
-    /* "timelib.pyx":77
+    /* "strtotime.pyx":77
  * 
  *     if error:  # warnings we don't care about
  *         timelib_error_container_dtor(error)             # <<<<<<<<<<<<<<
@@ -1443,7 +1468,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
     timelib_error_container_dtor(__pyx_v_error);
 
-    /* "timelib.pyx":78
+    /* "strtotime.pyx":78
  *     if error:  # warnings we don't care about
  *         timelib_error_container_dtor(error)
  *         error = NULL             # <<<<<<<<<<<<<<
@@ -1452,7 +1477,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
     __pyx_v_error = NULL;
 
-    /* "timelib.pyx":76
+    /* "strtotime.pyx":76
  *         return NULL
  * 
  *     if error:  # warnings we don't care about             # <<<<<<<<<<<<<<
@@ -1461,7 +1486,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   }
 
-  /* "timelib.pyx":80
+  /* "strtotime.pyx":80
  *         error = NULL
  * 
  *     if now is None:             # <<<<<<<<<<<<<<
@@ -1472,40 +1497,40 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "timelib.pyx":81
+    /* "strtotime.pyx":81
  * 
  *     if now is None:
  *         now = int(time.time())             # <<<<<<<<<<<<<<
  *     else:
  *         now = int(now)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-        __Pyx_INCREF(__pyx_t_5);
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_time); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_6, function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
       }
     }
-    __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF_SET(__pyx_v_now, __pyx_t_6);
-    __pyx_t_6 = 0;
+    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF_SET(__pyx_v_now, __pyx_t_4);
+    __pyx_t_4 = 0;
 
-    /* "timelib.pyx":80
+    /* "strtotime.pyx":80
  *         error = NULL
  * 
  *     if now is None:             # <<<<<<<<<<<<<<
@@ -1515,7 +1540,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
     goto __pyx_L7;
   }
 
-  /* "timelib.pyx":83
+  /* "strtotime.pyx":83
  *         now = int(time.time())
  *     else:
  *         now = int(now)             # <<<<<<<<<<<<<<
@@ -1523,14 +1548,14 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  *     tm_now = timelib_time_ctor()
  */
   /*else*/ {
-    __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_v_now); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF_SET(__pyx_v_now, __pyx_t_6);
-    __pyx_t_6 = 0;
+    __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_v_now); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF_SET(__pyx_v_now, __pyx_t_4);
+    __pyx_t_4 = 0;
   }
   __pyx_L7:;
 
-  /* "timelib.pyx":85
+  /* "strtotime.pyx":85
  *         now = int(now)
  * 
  *     tm_now = timelib_time_ctor()             # <<<<<<<<<<<<<<
@@ -1539,17 +1564,17 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   __pyx_v_tm_now = timelib_time_ctor();
 
-  /* "timelib.pyx":90
+  /* "strtotime.pyx":90
  *     # timelib_update_from_sse(tm_now)
  * 
  *     timelib_unixtime2gmt(tm_now, now)             # <<<<<<<<<<<<<<
  *     # timelib_unixtime2local(tm_now, now)
  * 
  */
-  __pyx_t_7 = __Pyx_PyInt_As_long(__pyx_v_now); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
-  timelib_unixtime2gmt(__pyx_v_tm_now, __pyx_t_7);
+  __pyx_t_9 = __Pyx_PyInt_As_long(__pyx_v_now); if (unlikely((__pyx_t_9 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
+  timelib_unixtime2gmt(__pyx_v_tm_now, __pyx_t_9);
 
-  /* "timelib.pyx":93
+  /* "strtotime.pyx":93
  *     # timelib_unixtime2local(tm_now, now)
  * 
  *     timelib_fill_holes(t, tm_now, 0)             # <<<<<<<<<<<<<<
@@ -1558,7 +1583,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   timelib_fill_holes(__pyx_v_t, __pyx_v_tm_now, 0);
 
-  /* "timelib.pyx":95
+  /* "strtotime.pyx":95
  *     timelib_fill_holes(t, tm_now, 0)
  * 
  *     timelib_update_ts(t, NULL)             # <<<<<<<<<<<<<<
@@ -1567,7 +1592,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   timelib_update_ts(__pyx_v_t, NULL);
 
-  /* "timelib.pyx":96
+  /* "strtotime.pyx":96
  * 
  *     timelib_update_ts(t, NULL)
  *     timelib_time_dtor(tm_now)             # <<<<<<<<<<<<<<
@@ -1576,7 +1601,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
   timelib_time_dtor(__pyx_v_tm_now);
 
-  /* "timelib.pyx":97
+  /* "strtotime.pyx":97
  *     timelib_update_ts(t, NULL)
  *     timelib_time_dtor(tm_now)
  *     return t             # <<<<<<<<<<<<<<
@@ -1586,7 +1611,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_r = __pyx_v_t;
   goto __pyx_L0;
 
-  /* "timelib.pyx":59
+  /* "strtotime.pyx":59
  *     raise ValueError(description)
  * 
  * cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:             # <<<<<<<<<<<<<<
@@ -1598,8 +1623,8 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("timelib.strtotimelib_time", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("strtotime.strtotimelib_time", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_msg);
@@ -1608,7 +1633,7 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
   return __pyx_r;
 }
 
-/* "timelib.pyx":100
+/* "strtotime.pyx":100
  * 
  * 
  * def strtodatetime(char *s, now=None):             # <<<<<<<<<<<<<<
@@ -1617,9 +1642,9 @@ static timelib_time *__pyx_f_7timelib_strtotimelib_time(char *__pyx_v_s, struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7timelib_3strtodatetime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7timelib_3strtodatetime = {"strtodatetime", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7timelib_3strtodatetime, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7timelib_3strtodatetime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9strtotime_3strtodatetime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9strtotime_3strtodatetime = {"strtodatetime", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9strtotime_3strtodatetime, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9strtotime_3strtodatetime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   char *__pyx_v_s;
   PyObject *__pyx_v_now = 0;
   PyObject *__pyx_r = 0;
@@ -1671,18 +1696,18 @@ static PyObject *__pyx_pw_7timelib_3strtodatetime(PyObject *__pyx_self, PyObject
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("strtodatetime", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 100, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("timelib.strtodatetime", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("strtotime.strtodatetime", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7timelib_2strtodatetime(__pyx_self, __pyx_v_s, __pyx_v_now);
+  __pyx_r = __pyx_pf_9strtotime_2strtodatetime(__pyx_self, __pyx_v_s, __pyx_v_now);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now) {
+static PyObject *__pyx_pf_9strtotime_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now) {
   PyObject *__pyx_v_datetime = NULL;
   timelib_time *__pyx_v_t;
   PyObject *__pyx_v_retval = NULL;
@@ -1690,7 +1715,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   timelib_time *__pyx_t_2;
-  struct __pyx_opt_args_7timelib_strtotimelib_time __pyx_t_3;
+  struct __pyx_opt_args_9strtotime_strtotimelib_time __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
@@ -1704,19 +1729,19 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_t_14;
   __Pyx_RefNannySetupContext("strtodatetime", 0);
 
-  /* "timelib.pyx":101
+  /* "strtotime.pyx":101
  * 
  * def strtodatetime(char *s, now=None):
  *     import datetime             # <<<<<<<<<<<<<<
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_datetime, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_datetime, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_datetime = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "timelib.pyx":103
+  /* "strtotime.pyx":103
  *     import datetime
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)             # <<<<<<<<<<<<<<
@@ -1725,10 +1750,10 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
  */
   __pyx_t_3.__pyx_n = 1;
   __pyx_t_3.now = __pyx_v_now;
-  __pyx_t_2 = __pyx_f_7timelib_strtotimelib_time(__pyx_v_s, &__pyx_t_3); if (unlikely(__pyx_t_2 == ((timelib_time *)NULL))) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_9strtotime_strtotimelib_time(__pyx_v_s, &__pyx_t_3); if (unlikely(__pyx_t_2 == ((timelib_time *)NULL))) __PYX_ERR(0, 103, __pyx_L1_error)
   __pyx_v_t = __pyx_t_2;
 
-  /* "timelib.pyx":105
+  /* "strtotime.pyx":105
  *     t = strtotimelib_time(s, now)
  * 
  *     retval = datetime.datetime(t.y, t.m, t.d, t.h, t.i, t.s)             # <<<<<<<<<<<<<<
@@ -1821,7 +1846,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   __pyx_v_retval = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "timelib.pyx":106
+  /* "strtotime.pyx":106
  * 
  *     retval = datetime.datetime(t.y, t.m, t.d, t.h, t.i, t.s)
  *     if t:             # <<<<<<<<<<<<<<
@@ -1831,7 +1856,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_14 = (__pyx_v_t != 0);
   if (__pyx_t_14) {
 
-    /* "timelib.pyx":107
+    /* "strtotime.pyx":107
  *     retval = datetime.datetime(t.y, t.m, t.d, t.h, t.i, t.s)
  *     if t:
  *         timelib_time_dtor(t)             # <<<<<<<<<<<<<<
@@ -1840,7 +1865,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
  */
     timelib_time_dtor(__pyx_v_t);
 
-    /* "timelib.pyx":106
+    /* "strtotime.pyx":106
  * 
  *     retval = datetime.datetime(t.y, t.m, t.d, t.h, t.i, t.s)
  *     if t:             # <<<<<<<<<<<<<<
@@ -1849,7 +1874,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
  */
   }
 
-  /* "timelib.pyx":109
+  /* "strtotime.pyx":109
  *         timelib_time_dtor(t)
  * 
  *     return retval             # <<<<<<<<<<<<<<
@@ -1861,7 +1886,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   __pyx_r = __pyx_v_retval;
   goto __pyx_L0;
 
-  /* "timelib.pyx":100
+  /* "strtotime.pyx":100
  * 
  * 
  * def strtodatetime(char *s, now=None):             # <<<<<<<<<<<<<<
@@ -1881,7 +1906,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("timelib.strtodatetime", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("strtotime.strtodatetime", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_datetime);
@@ -1891,7 +1916,7 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "timelib.pyx":112
+/* "strtotime.pyx":112
  * 
  * 
  * def strtotime(char *s, now=None):             # <<<<<<<<<<<<<<
@@ -1900,9 +1925,9 @@ static PyObject *__pyx_pf_7timelib_2strtodatetime(CYTHON_UNUSED PyObject *__pyx_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7timelib_5strtotime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7timelib_5strtotime = {"strtotime", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7timelib_5strtotime, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7timelib_5strtotime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9strtotime_5strtotime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9strtotime_5strtotime = {"strtotime", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9strtotime_5strtotime, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9strtotime_5strtotime(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   char *__pyx_v_s;
   PyObject *__pyx_v_now = 0;
   PyObject *__pyx_r = 0;
@@ -1954,29 +1979,29 @@ static PyObject *__pyx_pw_7timelib_5strtotime(PyObject *__pyx_self, PyObject *__
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("strtotime", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 112, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("timelib.strtotime", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("strtotime.strtotime", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7timelib_4strtotime(__pyx_self, __pyx_v_s, __pyx_v_now);
+  __pyx_r = __pyx_pf_9strtotime_4strtotime(__pyx_self, __pyx_v_s, __pyx_v_now);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now) {
+static PyObject *__pyx_pf_9strtotime_4strtotime(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_s, PyObject *__pyx_v_now) {
   timelib_time *__pyx_v_t;
   long __pyx_v_retval;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   timelib_time *__pyx_t_1;
-  struct __pyx_opt_args_7timelib_strtotimelib_time __pyx_t_2;
+  struct __pyx_opt_args_9strtotime_strtotimelib_time __pyx_t_2;
   long __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("strtotime", 0);
 
-  /* "timelib.pyx":114
+  /* "strtotime.pyx":114
  * def strtotime(char *s, now=None):
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)             # <<<<<<<<<<<<<<
@@ -1985,10 +2010,10 @@ static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self
  */
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.now = __pyx_v_now;
-  __pyx_t_1 = __pyx_f_7timelib_strtotimelib_time(__pyx_v_s, &__pyx_t_2); if (unlikely(__pyx_t_1 == ((timelib_time *)NULL))) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9strtotime_strtotimelib_time(__pyx_v_s, &__pyx_t_2); if (unlikely(__pyx_t_1 == ((timelib_time *)NULL))) __PYX_ERR(0, 114, __pyx_L1_error)
   __pyx_v_t = __pyx_t_1;
 
-  /* "timelib.pyx":115
+  /* "strtotime.pyx":115
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)
  *     retval = t.sse             # <<<<<<<<<<<<<<
@@ -1998,7 +2023,7 @@ static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_3 = __pyx_v_t->sse;
   __pyx_v_retval = __pyx_t_3;
 
-  /* "timelib.pyx":116
+  /* "strtotime.pyx":116
  *     t = strtotimelib_time(s, now)
  *     retval = t.sse
  *     timelib_time_dtor(t)             # <<<<<<<<<<<<<<
@@ -2006,7 +2031,7 @@ static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self
  */
   timelib_time_dtor(__pyx_v_t);
 
-  /* "timelib.pyx":117
+  /* "strtotime.pyx":117
  *     retval = t.sse
  *     timelib_time_dtor(t)
  *     return retval             # <<<<<<<<<<<<<<
@@ -2018,7 +2043,7 @@ static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "timelib.pyx":112
+  /* "strtotime.pyx":112
  * 
  * 
  * def strtotime(char *s, now=None):             # <<<<<<<<<<<<<<
@@ -2029,7 +2054,7 @@ static PyObject *__pyx_pf_7timelib_4strtotime(CYTHON_UNUSED PyObject *__pyx_self
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("timelib.strtotime", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("strtotime.strtotime", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2044,17 +2069,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_timelib(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_strtotime(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_timelib},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_strtotime},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "timelib",
+    "strtotime",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -2083,7 +2108,8 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_0_2_4, __pyx_k_0_2_4, sizeof(__pyx_k_0_2_4), 0, 0, 1, 0},
+  {&__pyx_kp_u_, __pyx_k_, sizeof(__pyx_k_), 0, 1, 0, 0},
+  {&__pyx_kp_u_0_2_4, __pyx_k_0_2_4, sizeof(__pyx_k_0_2_4), 0, 1, 0, 0},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_datetime, __pyx_k_datetime, sizeof(__pyx_k_datetime), 0, 0, 1, 1},
@@ -2097,14 +2123,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {&__pyx_n_s_strtodatetime, __pyx_k_strtodatetime, sizeof(__pyx_k_strtodatetime), 0, 0, 1, 1},
   {&__pyx_n_s_strtotime, __pyx_k_strtotime, sizeof(__pyx_k_strtotime), 0, 0, 1, 1},
+  {&__pyx_kp_s_strtotime_pyx, __pyx_k_strtotime_pyx, sizeof(__pyx_k_strtotime_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
-  {&__pyx_n_s_timelib, __pyx_k_timelib, sizeof(__pyx_k_timelib), 0, 0, 1, 1},
-  {&__pyx_kp_s_timelib_pyx, __pyx_k_timelib_pyx, sizeof(__pyx_k_timelib_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_version, __pyx_k_version, sizeof(__pyx_k_version), 0, 0, 1, 1},
   {&__pyx_n_s_version_info, __pyx_k_version_info, sizeof(__pyx_k_version_info), 0, 0, 1, 1},
-  {&__pyx_kp_s_while_parsing_date_r, __pyx_k_while_parsing_date_r, sizeof(__pyx_k_while_parsing_date_r), 0, 0, 1, 0},
+  {&__pyx_kp_u_while_parsing_date, __pyx_k_while_parsing_date, sizeof(__pyx_k_while_parsing_date), 0, 1, 0, 0},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -2118,52 +2143,52 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "timelib.pyx":5
+  /* "strtotime.pyx":5
  * 
  * version = "0.2.4"
  * version_info = (0, 2, 4)             # <<<<<<<<<<<<<<
  * 
  * cdef extern from "timelib.h":
  */
-  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_0, __pyx_int_2, __pyx_int_4); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
+  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_2, __pyx_int_4); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "timelib.pyx":56
+  /* "strtotime.pyx":56
  * 
  * 
  * def _raise_error(description):             # <<<<<<<<<<<<<<
  *     raise ValueError(description)
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_description); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__2);
-  __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_timelib_pyx, __pyx_n_s_raise_error, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_description); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_strtotime_pyx, __pyx_n_s_raise_error, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 56, __pyx_L1_error)
 
-  /* "timelib.pyx":100
+  /* "strtotime.pyx":100
  * 
  * 
  * def strtodatetime(char *s, now=None):             # <<<<<<<<<<<<<<
  *     import datetime
  *     cdef timelib_time *t
  */
-  __pyx_tuple__4 = PyTuple_Pack(5, __pyx_n_s_s, __pyx_n_s_now, __pyx_n_s_datetime, __pyx_n_s_t, __pyx_n_s_retval); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_timelib_pyx, __pyx_n_s_strtodatetime, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(5, __pyx_n_s_s, __pyx_n_s_now, __pyx_n_s_datetime, __pyx_n_s_t, __pyx_n_s_retval); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_strtotime_pyx, __pyx_n_s_strtodatetime, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 100, __pyx_L1_error)
 
-  /* "timelib.pyx":112
+  /* "strtotime.pyx":112
  * 
  * 
  * def strtotime(char *s, now=None):             # <<<<<<<<<<<<<<
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)
  */
-  __pyx_tuple__6 = PyTuple_Pack(4, __pyx_n_s_s, __pyx_n_s_now, __pyx_n_s_t, __pyx_n_s_retval); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 112, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_timelib_pyx, __pyx_n_s_strtotime, 112, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(4, __pyx_n_s_s, __pyx_n_s_now, __pyx_n_s_t, __pyx_n_s_retval); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_strtotime_pyx, __pyx_n_s_strtotime, 112, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2262,11 +2287,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC inittimelib(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC inittimelib(void)
+__Pyx_PyMODINIT_FUNC initstrtotime(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initstrtotime(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_timelib(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_timelib(void)
+__Pyx_PyMODINIT_FUNC PyInit_strtotime(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_strtotime(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -2333,7 +2358,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_timelib(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_strtotime(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -2342,7 +2367,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_timelib(PyObject *__pyx_pyinit_mod
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'timelib' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'strtotime' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -2357,7 +2382,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_timelib(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_strtotime(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -2396,7 +2421,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("timelib", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("strtotime", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -2414,14 +2439,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_timelib) {
+  if (__pyx_module_is_main_strtotime) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 2, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "timelib")) {
-      if (unlikely(PyDict_SetItemString(modules, "timelib", __pyx_m) < 0)) __PYX_ERR(0, 2, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "strtotime")) {
+      if (unlikely(PyDict_SetItemString(modules, "strtotime", __pyx_m) < 0)) __PYX_ERR(0, 2, __pyx_L1_error)
     }
   }
   #endif
@@ -2442,76 +2467,76 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #endif
 
-  /* "timelib.pyx":2
+  /* "strtotime.pyx":2
  * 
  * import time, datetime             # <<<<<<<<<<<<<<
  * 
  * version = "0.2.4"
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_time, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_time, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_datetime, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_datetime, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_datetime, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "timelib.pyx":4
+  /* "strtotime.pyx":4
  * import time, datetime
  * 
  * version = "0.2.4"             # <<<<<<<<<<<<<<
  * version_info = (0, 2, 4)
  * 
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_kp_s_0_2_4) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_kp_u_0_2_4) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
 
-  /* "timelib.pyx":5
+  /* "strtotime.pyx":5
  * 
  * version = "0.2.4"
  * version_info = (0, 2, 4)             # <<<<<<<<<<<<<<
  * 
  * cdef extern from "timelib.h":
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version_info, __pyx_tuple_) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_version_info, __pyx_tuple__2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
 
-  /* "timelib.pyx":56
+  /* "strtotime.pyx":56
  * 
  * 
  * def _raise_error(description):             # <<<<<<<<<<<<<<
  *     raise ValueError(description)
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7timelib_1_raise_error, NULL, __pyx_n_s_timelib); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9strtotime_1_raise_error, NULL, __pyx_n_s_strtotime); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_raise_error, __pyx_t_1) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "timelib.pyx":100
+  /* "strtotime.pyx":100
  * 
  * 
  * def strtodatetime(char *s, now=None):             # <<<<<<<<<<<<<<
  *     import datetime
  *     cdef timelib_time *t
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7timelib_3strtodatetime, NULL, __pyx_n_s_timelib); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9strtotime_3strtodatetime, NULL, __pyx_n_s_strtotime); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_strtodatetime, __pyx_t_1) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "timelib.pyx":112
+  /* "strtotime.pyx":112
  * 
  * 
  * def strtotime(char *s, now=None):             # <<<<<<<<<<<<<<
  *     cdef timelib_time *t
  *     t = strtotimelib_time(s, now)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7timelib_5strtotime, NULL, __pyx_n_s_timelib); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9strtotime_5strtotime, NULL, __pyx_n_s_strtotime); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_strtotime, __pyx_t_1) < 0) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "timelib.pyx":2
+  /* "strtotime.pyx":2
  * 
  * import time, datetime             # <<<<<<<<<<<<<<
  * 
@@ -2529,11 +2554,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init timelib", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init strtotime", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init timelib");
+    PyErr_SetString(PyExc_ImportError, "init strtotime");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2996,6 +3021,87 @@ bad:
     return;
 }
 #endif
+
+/* PyObjectFormatAndDecref */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_FormatSimpleAndDecref(PyObject* s, PyObject* f) {
+    if (unlikely(!s)) return NULL;
+    if (likely(PyUnicode_CheckExact(s))) return s;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyString_CheckExact(s))) {
+        PyObject *result = PyUnicode_FromEncodedObject(s, NULL, "strict");
+        Py_DECREF(s);
+        return result;
+    }
+    #endif
+    return __Pyx_PyObject_FormatAndDecref(s, f);
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_FormatAndDecref(PyObject* s, PyObject* f) {
+    PyObject *result = PyObject_Format(s, f);
+    Py_DECREF(s);
+    return result;
+}
+
+/* JoinPyUnicode */
+static PyObject* __Pyx_PyUnicode_Join(PyObject* value_tuple, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      CYTHON_UNUSED Py_UCS4 max_char) {
+#if CYTHON_USE_UNICODE_INTERNALS && CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    PyObject *result_uval;
+    int result_ukind;
+    Py_ssize_t i, char_pos;
+    void *result_udata;
+#if CYTHON_PEP393_ENABLED
+    result_uval = PyUnicode_New(result_ulength, max_char);
+    if (unlikely(!result_uval)) return NULL;
+    result_ukind = (max_char <= 255) ? PyUnicode_1BYTE_KIND : (max_char <= 65535) ? PyUnicode_2BYTE_KIND : PyUnicode_4BYTE_KIND;
+    result_udata = PyUnicode_DATA(result_uval);
+#else
+    result_uval = PyUnicode_FromUnicode(NULL, result_ulength);
+    if (unlikely(!result_uval)) return NULL;
+    result_ukind = sizeof(Py_UNICODE);
+    result_udata = PyUnicode_AS_UNICODE(result_uval);
+#endif
+    char_pos = 0;
+    for (i=0; i < value_count; i++) {
+        int ukind;
+        Py_ssize_t ulength;
+        void *udata;
+        PyObject *uval = PyTuple_GET_ITEM(value_tuple, i);
+        if (unlikely(__Pyx_PyUnicode_READY(uval)))
+            goto bad;
+        ulength = __Pyx_PyUnicode_GET_LENGTH(uval);
+        if (unlikely(!ulength))
+            continue;
+        if (unlikely(char_pos + ulength < 0))
+            goto overflow;
+        ukind = __Pyx_PyUnicode_KIND(uval);
+        udata = __Pyx_PyUnicode_DATA(uval);
+        if (!CYTHON_PEP393_ENABLED || ukind == result_ukind) {
+            memcpy((char *)result_udata + char_pos * result_ukind, udata, (size_t) (ulength * result_ukind));
+        } else {
+            #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030300F0 || defined(_PyUnicode_FastCopyCharacters)
+            _PyUnicode_FastCopyCharacters(result_uval, char_pos, uval, 0, ulength);
+            #else
+            Py_ssize_t j;
+            for (j=0; j < ulength; j++) {
+                Py_UCS4 uchar = __Pyx_PyUnicode_READ(ukind, udata, j);
+                __Pyx_PyUnicode_WRITE(result_ukind, result_udata, char_pos+j, uchar);
+            }
+            #endif
+        }
+        char_pos += ulength;
+    }
+    return result_uval;
+overflow:
+    PyErr_SetString(PyExc_OverflowError, "join() result is too long for a Python string");
+bad:
+    Py_DECREF(result_uval);
+    return NULL;
+#else
+    result_ulength++;
+    value_count++;
+    return PyUnicode_Join(__pyx_empty_unicode, value_tuple);
+#endif
+}
 
 /* PyDictVersioning */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS

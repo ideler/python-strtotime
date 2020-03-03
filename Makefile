@@ -1,13 +1,13 @@
-all:: timelib.c
+all:: strtotime.c
 	python setup.py build
 
 clean::
 	rm -rf *.so build/ dist/
 
-install:: timelib.c
+install:: strtotime.c
 	python setup.py build install
 
-dist:: timelib.c lib/parse_date.c
+dist:: strtotime.c lib/parse_date.c
 	python setup.py build sdist bdist_wheel
 
 lib/parse_date.c: lib/parse_date.re

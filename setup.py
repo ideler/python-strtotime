@@ -27,7 +27,7 @@ sources = [
     "lib/timelib.c",
     "lib/tm2unixtime.c",
     "lib/unixtime2tm.c",
-    "timelib.c",
+    "strtotime.c",
 ]
 
 extra_compile_args = sysconfig.get_config_var("CFLAGS").split()
@@ -37,19 +37,19 @@ extra_compile_args += [
     "-Wno-unreachable-code",
 ]
 
-if not os.path.exists("timelib.c"):
-    os.system("cython --directive language_level=3 timelib.pyx")
+if not os.path.exists("strtotime.c"):
+    os.system("cython --directive language_level=3 strtotime.pyx")
 
 setup(
     name="strtotime",
-    version="1.0.1",
+    version="1.0.2",
     description="wrapper for timelib",
     author="Ideler IT-Service GmbH",
     author_email="hosting@ideler.de",
     url="https://github.com/ideler/python-strtotime/",
     ext_modules=[
         Extension(
-            "timelib",
+            "strtotime",
             sources=sources,
             libraries=libraries,
             extra_compile_args=extra_compile_args,
