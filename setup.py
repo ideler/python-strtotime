@@ -41,12 +41,12 @@ if not os.path.exists("timelib.c"):
     os.system("cython --directive language_level=3 timelib.pyx")
 
 setup(
-    name="timelib",
-    version="0.2.4",
-    description="parse english textual date descriptions",
-    author="Ralf Schmitt",
-    author_email="ralf@systemexit.de",
-    url="https://github.com/pediapress/timelib/",
+    name="strtotime",
+    version="1.0.0",
+    description="wrapper for timelib",
+    author="Ideler IT-Service GmbH",
+    author_email="hosting@ideler.de",
+    url="https://github.com/ideler/python-strtotime/",
     ext_modules=[
         Extension(
             "timelib",
