@@ -7,11 +7,11 @@ clean::
 install:: timelib.c
 	python setup.py build install
 
-sdist:: timelib.c
-	python setup.py build sdist
+dist:: timelib.c
+	python setup.py build sdist bdist_wheel
 
-ext-date-lib/parse_date.c: ext-date-lib/parse_date.re
+lib/parse_date.c: lib/parse_date.re
 	re2c -d -b -o ext-date-lib/parse_date.c ext-date-lib/parse_date.re
 
 %.c: %.pyx
-	cython $< -o $@
+	cython --directive language_level=3 $< -o $@

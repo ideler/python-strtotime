@@ -30,8 +30,15 @@ sources = [
     "timelib.c",
 ]
 
+extra_compile_args = sysconfig.get_config_var("CFLAGS").split()
+extra_compile_args += [
+    "-Wno-expansion-to-defined",
+    "-Wno-nullability-completeness",
+    "-Wno-unreachable-code",
+]
+
 if not os.path.exists("timelib.c"):
-    os.system("cython --directive language_level=3 --3str timelib.pyx")
+    os.system("cython --directive language_level=3 timelib.pyx")
 
 setup(
     name="timelib",
@@ -45,6 +52,7 @@ setup(
             "timelib",
             sources=sources,
             libraries=libraries,
+            extra_compile_args=extra_compile_args,
             define_macros=[("HAVE_STRING_H", 1)],
         )
     ],
