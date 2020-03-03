@@ -1,7 +1,6 @@
 stages:
   - prepare
   - build
-  - repair
 
 prepare:
   stage: prepare
@@ -24,7 +23,8 @@ cp34_x64:
   dependencies:
     - prepare
   script:
-    - /opt/python/cp34-cp34m/pip wheel . -w dist
+    - /opt/python/cp34-cp34m/bin/pip wheel . -w dist
+    - auditwheel repair dist/*whl -w dist
   artifacts:
     paths:
-      - dist/*whl
+      - dist/*manylinux*whl
