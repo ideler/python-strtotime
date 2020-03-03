@@ -96,11 +96,23 @@ cdef timelib_time *strtotimelib_time(char *s, now=None) except NULL:
     timelib_time_dtor(tm_now)
     return t
 
+from cpython.version cimport PY_MAJOR_VERSION
 
-def strtodatetime(char *s, now=None):
+cdef bytes _bytes(s):
+    if type(s) is unicode:
+        return (<unicode>s).encode('utf-8')
+    elif PY_MAJOR_VERSION < 3 and isinstance(s, bytes):
+        return <bytes>s
+    elif isinstance(s, unicode):
+        return unicode(s).encode('utf-8')
+    else:
+        raise TypeError("Could not convert to unicode.")
+
+
+def strtodatetime(s, now=None):
     import datetime
     cdef timelib_time *t
-    t = strtotimelib_time(s, now)
+    t = strtotimelib_time(_bytes(s), now)
 
     retval = datetime.datetime(t.y, t.m, t.d, t.h, t.i, t.s)
     if t:
@@ -109,9 +121,9 @@ def strtodatetime(char *s, now=None):
     return retval
 
 
-def strtotime(char *s, now=None):
+def strtotime(s, now=None):
     cdef timelib_time *t
-    t = strtotimelib_time(s, now)
+    t = strtotimelib_time(_bytes(s), now)
     retval = t.sse
     timelib_time_dtor(t)
     return retval

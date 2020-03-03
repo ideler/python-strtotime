@@ -5,5 +5,5 @@
 import strtotime, datetime
 
 
-ts = strtotime.strtotime("last sunday of last month noon".encode("utf-8"))
+ts = strtotime.strtotime("last sunday of last month noon")
 print(datetime.datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S"))
