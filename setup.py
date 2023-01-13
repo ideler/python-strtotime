@@ -42,7 +42,7 @@ if not os.path.exists("strtotime.c"):
 
 setup(
     name="strtotime",
-    version="1.0.3",
+    version="1.0.4",
     description="wrapper for timelib",
     author="Ideler IT-Service GmbH",
     author_email="hosting@ideler.de",
