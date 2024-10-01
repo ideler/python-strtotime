@@ -4,7 +4,7 @@ stages:
 
 prepare:
   stage: prepare
-  image: python:latest
+  image: python:3.6
   script:
     - apt-get update && apt-get install -y re2c
     - git submodule update --init --recursive
