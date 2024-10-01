@@ -6,7 +6,7 @@ prepare:
   stage: prepare
   image: python:latest
   script:
-    - apt-get update && apt-get install re2c
+    - apt-get update && apt-get install -y re2c
     - git submodule update --init --recursive
     - pip install virtualenv
     - virtualenv venv
@@ -20,7 +20,7 @@ prepare:
 
 wheel:
   stage: build
-  image: quay.io/pypa/manylinux1_x86_64
+  image: quay.io/pypa/manylinux2014_x86_64
   dependencies:
     - prepare
   script:
